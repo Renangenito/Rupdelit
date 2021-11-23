@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    width: 100%;
+    background-color: seashell;
+}
+.titulo-cabecalho{
+    text-align: center;
+    background-color: slateblue;
+    color: white;
+    padding: 20px 0;
+}
+.menu-principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: seashell;
+}
+
+.botao-cadastrar{
+    width: 150px;
+    height: 30px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #6a5acd;
+    border-color: #6a5acd;
+    color: #ffffff;
+    margin-top: 15px;
+}
+.botao-cadastrar:hover{
+    cursor: pointer;
+    background-color: rgb(92, 80, 168);
+}
+.botao-cadastrar:active{
+    background-color: #6a5acd;
+}
+
+table{
+    background-color: #ffffff;
+    margin-top: 10px;
+}
+
+th{
+    padding: 5px 0;
+    padding-left: 10px;
+    text-align: left;
+}
+tr, td{
+    width: 200px;
+    padding: 10px 0;
+    padding-left: 10px;
+}
+.botao-editar{
+    width: 70px;
+    background-color: #ffcc5c;
+    border-color: #ffcc5c;
+    font-weight: bold;
+}
+.botao-editar:hover{
+    background-color: rgb(250, 193, 71);
+    cursor: pointer;
+}
+.botao-editar:active{
+    background-color: #ffcc5c;
+}
+.botao-deletar{
+    width: 70px;
+    background-color: #d96459;
+    border-color: #d96459;
+    font-weight: bold;
+}
+.botao-deletar:hover{
+    background-color: #ca594f;
+    cursor: pointer;
+}
+.botao-deletar:active{
+    background-color: #d96459;
+}
