@@ -7,9 +7,11 @@ document.getElementById('editar').addEventListener('click', ()=>{
 
 document.getElementById('cancelar').addEventListener('click', ()=>{
     document.getElementById('modal').classList.remove("ativar-modal")
+    limpaCampos();
 })
 
 document.getElementById('icone-close').addEventListener('click', ()=>{
     document.getElementById('modal').classList.remove("ativar-modal")
+    limpaCampos();
 })
 

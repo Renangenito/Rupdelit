@@ -25,7 +25,7 @@
                     <th>Email</th>
                     <th></th>
                 </tr>
-            <tbody>
+            <tbody id="tabela-corpo">
                 <tr>
                     <td>Renan</td>
                     <td>11122233345</td>
@@ -33,7 +33,7 @@
                     <td>renan@email.com</td>
                     <td>
                         <button class="botao-editar" id="editar">Editar</button>
-                        <button class="botao-deletar">Deletar</button>
+                        <button class="botao-deletar" id="deletar">Deletar</button>
                     </td>
                 </tr>
             </tbody>
@@ -46,12 +46,12 @@
                 <h2 class="titulo-modal">Cadastro</h2>
                 <img id="icone-close" class="icone-modal" src="./icones/icon-close.png" alt="">
             </div>
-            <input type="text" placeholder="Digíte o nome" required>
-            <input type="text" placeholder="Digíte o CPF" required>
-            <input type="tel" name="telefone" id="telefone" placeholder="Digíte o Telefone">
+            <input type="text" id="nome" placeholder="Digíte o nome" required>
+            <input type="text" id="cpf" placeholder="Digíte o CPF" required>
+            <input  type="tel" name="telefone" id="telefone" placeholder="Digíte o Telefone">
             <input type="email" name="email" id="email" placeholder="Digíte o Email">
             <div>
-                <button class="botao-confirmar">Confirmar</button>
+                <button type="button" class="botao-confirmar" id="confirmar">Confirmar</button>
                 <button type="button" class="botao-cancelar" id="cancelar">Cancelar</button>
             </div>
         </form>
