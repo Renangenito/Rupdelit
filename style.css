@@ -41,24 +41,30 @@ html, body{
 
 table{
     background-color: #ffffff;
-    margin-top: 10px;
+    margin-top: 15px;
+    box-shadow: 0 0 10px;
 }
 
 th{
     padding: 5px 0;
     padding-left: 10px;
     text-align: left;
+    background-color: #ffca28;
 }
 tr, td{
     width: 200px;
     padding: 10px 0;
     padding-left: 10px;
+    font-size: 20px;
 }
+
 .botao-editar{
     width: 70px;
     background-color: #ffcc5c;
     border-color: #ffcc5c;
     font-weight: bold;
+    height: 28px;
+    margin-left: 18px;
 }
 .botao-editar:hover{
     background-color: rgb(250, 193, 71);
@@ -72,6 +78,8 @@ tr, td{
     background-color: #d96459;
     border-color: #d96459;
     font-weight: bold;
+    height: 28px;
+    margin-left: 10px;
 }
 .botao-deletar:hover{
     background-color: #ca594f;
