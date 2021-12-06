@@ -16,21 +16,24 @@
     </header>
     <main class="menu-principal">
         <button class="botao-cadastrar" id="cadastrar">Cadastrar</button>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
-                    <th>Ação</th>
-                </tr>
-                
-            <tbody id="tabela-corpo">
-                
-            </tbody>
-            </thead>
-        </table>
+        <div class="div-tabela">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th>Ação</th>
+                    </tr>
+                    
+                <tbody id="tabela-corpo">
+                    
+                </tbody>
+                </thead>
+            </table>
+        </div>
+        
     </main>
     <div class="secao-modal " id="modal">
         <form class="formulario-modal" id="formulario" action="">
@@ -38,7 +41,7 @@
                 <h2 class="titulo-modal">Cadastro</h2>
                 <img id="icone-close" class="icone-modal" src="./icones/icon-close.png" alt="">
             </div>
-            <input class="campos" type="text" id="nome" placeholder="Digíte o nome" required>
+            <input class="campos" type="text" id="nome" data-index="new" placeholder="Digíte o nome" required>
             <input class="campos" type="text" id="cpf" placeholder="Digíte o CPF" pattern='[0-9]{11}' title="Somente números e deve ter 11 dígitos" required>
             <input class="campos" type="tel" id="telefone" name="telefone" placeholder="Digíte o Telefone" pattern='[0-9]{10,11}' title="Somente números e deve ter 10 dígitos para telefone fixo ou 11 dígitos para celular" required>
             <input class="campos" type="email" id="email" name="email" placeholder="Digíte o Email" required>

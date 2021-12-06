@@ -4,7 +4,7 @@ const setLocalStorage = (dbClient) => localStorage.setItem("db_client", JSON.str
 const deleteClient = (index) => {
     const dbClient = getLocalStorage();
     dbClient.splice(index, 1) // Deleta pelo index e só 1 
-    setLocalStorage(dbClient) 
+    setLocalStorage(dbClient)
 }
 
 const updateClient = (index, client) => {
@@ -13,34 +13,42 @@ const updateClient = (index, client) => {
     setLocalStorage(dbClient)
 }
 
-const creteClient = (client) =>{
+const creteClient = (client) => {
     const dbClient = getLocalStorage();
     dbClient.push(client)
     setLocalStorage(dbClient)
 }
-const camposValidos = () =>{
-   return document.getElementById('formulario').reportValidity()
+const camposValidos = () => {
+    return document.getElementById('formulario').reportValidity()
 }
 
-const limpaCampos = () =>{
+const limpaCampos = () => {
     const campos = document.querySelectorAll('.campos')
     campos.forEach(campo => campo.value = "")
 }
 
-const saveClient = () =>{
-    if(camposValidos()){
+const saveClient = () => {
+    if (camposValidos()) {
         const client = {
             nome: document.getElementById('nome').value,
             cpf: document.getElementById('cpf').value,
             telefone: document.getElementById('telefone').value,
             email: document.getElementById('email').value
         }
-        creteClient(client)
-        atualizarTabela()
-        fecharModal();
+        const index = document.getElementById("nome").dataset.index;
+        if (index == "new"){
+            creteClient(client)
+            atualizarTabela()
+            fecharModal();
+        }else{
+            updateClient(index, client)
+            atualizarTabela()
+            fecharModal();
+        }
+
     }
 }
-const createLinha = (client) =>{
+const createLinha = (client, index) => {
     const novaLinha = document.createElement('tr')
     novaLinha.innerHTML = `
                     
@@ -49,49 +57,86 @@ const createLinha = (client) =>{
                     <td>${client.telefone}</td>
                     <td>${client.email}</td>
                     <td>
-                        <button class="botao-editar" id="editar">Editar</button>
-                        <button class="botao-deletar" id="deletar">Deletar</button>
+                        <button type= "button" class="botao-editar" id="editar-${index}">Editar</button>
+                        <button type= "button" class="botao-deletar" id="deletar-${index}">Deletar</button>
                     </td>
     `
 
     document.getElementById('tabela-corpo').appendChild(novaLinha) //Adiciona a TR ao TBODY
 }
 
-const limparTabela = () =>{
+const limparTabela = () => {
     const rows = document.querySelectorAll("#tabela-corpo> tr") // Remove as linhas duplicadas quando cadastrar
     rows.forEach(row => row.parentNode.removeChild(row))
 }
 
 
-const atualizarTabela = () =>{
+const atualizarTabela = () => {
     const dbClient = getLocalStorage() //Cria as linhas da tabela assim que carregar a página
     limparTabela()
     dbClient.forEach(createLinha)
 }
 
-atualizarTabela() 
+atualizarTabela()
 
 
 // ------------- MODAL -------------
 const abrirModal = () => {
     document.getElementById('modal').classList.add("ativar-modal") //Abre o modal
-   }
+}
 
 const fecharModal = () => {
     document.getElementById('modal').classList.remove("ativar-modal"); //Fecha o modal e limpa os campos
     limpaCampos();
-   }  
+}
 
+const preencherCampos = (client) => {
+    document.getElementById('nome').value = client.nome;
+    document.getElementById('cpf').value = client.cpf;
+    document.getElementById('telefone').value = client.telefone;
+    document.getElementById('email').value = client.email;
+    document.getElementById('nome').dataset.index = client.index;
+    abrirModal()
+}
 
-document.getElementById('cadastrar').addEventListener('click', abrirModal) // Botão cadastrar abre o modal
-// document.getElementById('editar').addEventListener('click', abrirModal)    // Botão editar abre o modal
+const editarClient = (index) => {
+    const client = getLocalStorage()[index]
+    client.index = index
+    preencherCampos(client)
+}
 
-document.getElementById('cancelar').addEventListener('click', ()=>{
+const editarDeletar = (event) => {
+
+    if (event.target.type == "button") {
+        const [action, index] = event.target.id.split('-')
+        if (action == "editar") {
+            editarClient(index)
+        } else {
+            const client = getLocalStorage()[index]
+            const mensagem = confirm (`Deseja mesmo deletar o ${client.nome}`)
+            if(mensagem){
+                deleteClient(index)
+                atualizarTabela()
+            }
+            
+        }
+    }
+}
+
+document.getElementById('cadastrar').addEventListener('click', ()=>{
+    document.getElementById('nome').dataset.index = "new";
+    abrirModal()
+}) // Botão cadastrar abre o modal
+
+document.getElementById('cancelar').addEventListener('click', () => {
     fecharModal();                                                      // Botão Cancelar fecha modal
 })
 
-document.getElementById('icone-close').addEventListener('click', ()=>{ 
+document.getElementById('icone-close').addEventListener('click', () => {
     fecharModal();                                                       //Ícone de X close modal
 })
 
 document.getElementById('confirmar').addEventListener('click', saveClient) // Botão confirmar adiciona
+
+document.querySelector('#tabela-corpo').addEventListener('click', editarDeletar)
+

@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -5,11 +6,15 @@
 html, body{
     width: 100vw;
 }
+header{
+    width: 100vw;
+}
 .titulo-cabecalho{
+    width: 100vw;
     text-align: center;
     background-color: slateblue;
     color: white;
-    padding: 1.5rem;
+    padding: 1.5rem 0;
 }
 .menu-principal{
     display: flex;
@@ -36,9 +41,14 @@ html, body{
 .botao-cadastrar:active{
     background-color: #6a5acd;
 }
+.div-tabela{
+    width: 1200px;
+    height: 100vh;
+}
 
 table{
     background-color: #ffffff;
+    margin: 0 auto;
     margin-top: 1rem;
     box-shadow: 0 0 10px;
 }
@@ -89,3 +99,55 @@ tr:hover{
 .botao-deletar:active{
     background-color: #d96459;
 }
+
+
+
+@media screen and (min-width: 375px )and (max-width: 500px){
+    
+    thead{
+        display: none;
+    }
+    
+    tr,td{
+        display: block;
+    }
+    td:nth-child(1){
+        margin-top: 15px;
+    }
+   
+    tr{
+        width: 90vw;
+        height: 265px;
+        box-shadow: 0 1px 6px
+    }
+     td{
+        width: 330px;
+        font-size: 25px;
+    }
+    .botao-editar, .botao-deletar{
+        width: 85px;
+        height: 43px;
+        font-size: 17px;
+    }
+    .botao-editar{
+        margin: 7px 40px 0 0;
+    }
+
+    .botao-cadastrar{
+        position: fixed;
+        left: 80vw;
+        top: 90vh;
+        font-size: 0;
+        width: 70px;
+        height: 70px;
+        border: none;
+        border-radius: 35px;
+
+    }
+    .botao-cadastrar::before{
+        content: "+";
+        color:black;
+        font-size:3rem;
+    }
+    
+}    
