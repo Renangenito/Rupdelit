@@ -42,11 +42,12 @@ header{
     background-color: #6a5acd;
 }
 .div-tabela{
-    width: 1200px;
+    width: 95vw;
     height: 100vh;
 }
 
 table{
+    width: 95vw;
     background-color: #ffffff;
     margin: 0 auto;
     margin-top: 1rem;
@@ -148,6 +149,13 @@ tr:hover{
         content: "+";
         color:black;
         font-size:3rem;
+    }
+
+    .formulario-modal{
+        position: fixed;
+        left: 6px;
+        top: 200px;
+
     }
     
 }    
